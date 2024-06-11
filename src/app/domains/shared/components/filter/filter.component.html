@@ -1,0 +1,57 @@
+<!-- Breadcrumb -->
+<nav class="justify-start px-4 py-3 text-gray-700 border border-gray-200 rounded-lg sm:flex sm:px-5 bg-gray-50 dark:bg-gray-800 dark:border-gray-700"
+    aria-label="Breadcrumb">
+    <form class=" mx-auto" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+        <ol class="inline-flex items-center mb-3 space-x-1 md:space-x-2 rtl:space-x-reverse sm:mb-0">
+            <li>
+                <div class="flex items-center">
+                    <a href="#"
+                        class="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">Turismo
+                        en colombia</a>
+                </div>
+            </li>
+
+            <li>
+                <label>Departamento</label>
+                <div class="relative">
+                    <select formControlName="departamento" id="countries" (change)="getCitieByDepartment()"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option selected>Todos</option>
+                        @for(department of departments(); track department.id){
+                            <option [value]="department.id">{{department.name}}</option>
+                        }
+                    </select>
+                </div>
+            </li>
+
+            <li>
+                <label>Ciudad</label>
+                <div class="relative">
+                    <select formControlName="ciudad" id="countries"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option selected>Todos</option>
+                        @for(ciudad of cities(); track ciudad.id){
+                            <option [value]="ciudad.id">{{ciudad.name}}</option>
+                        }
+                    </select>
+                </div>
+            </li>
+
+            <li>
+
+                <div class="relative">
+                    <label>Nombre sitio</label>
+                    <input formControlName="nombre" type="search" id="default-search"
+                        class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        required />
+                </div>
+            </li>
+
+            <li>
+                <button type="submit"
+                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Buscar</button>
+            </li>
+
+        </ol>
+    </form>
+</nav>
